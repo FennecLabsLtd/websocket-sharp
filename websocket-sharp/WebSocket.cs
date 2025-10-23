@@ -1433,7 +1433,7 @@ namespace FennecLabs.Spawnpoint.ThirdParty.WebSocketSharp
     {
       lock (_forConn) {
         if (_readyState != WebSocketState.Open) {
-          _logger.Error ("The sending has been interrupted.");
+          _logger.Error ("The sending has been interrupted, readyState = " + _readyState);
           return false;
         }
 
@@ -1455,7 +1455,7 @@ namespace FennecLabs.Spawnpoint.ThirdParty.WebSocketSharp
 
           sent = send (opcode, stream, compressed);
           if (!sent)
-            error ("The sending has been interrupted.", null);
+            error ("The sending has been interrupted, sent = false", null);
         }
         catch (Exception ex) {
           _logger.Error (ex.ToString ());
@@ -1522,7 +1522,7 @@ namespace FennecLabs.Spawnpoint.ThirdParty.WebSocketSharp
     {
       lock (_forConn) {
         if (_readyState != WebSocketState.Open) {
-          _logger.Error ("The sending has been interrupted.");
+          _logger.Error ("The sending has been interrupted, readyState = " + _readyState);
           return false;
         }
 
@@ -2024,7 +2024,7 @@ namespace FennecLabs.Spawnpoint.ThirdParty.WebSocketSharp
       lock (_forSend) {
         lock (_forConn) {
           if (_readyState != WebSocketState.Open) {
-            _logger.Error ("The sending has been interrupted.");
+            _logger.Error ("The sending has been interrupted, readyState = " + _readyState);
             return;
           }
 
